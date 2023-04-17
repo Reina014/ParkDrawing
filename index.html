@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park - Final Project</title>
+    <style>
+        svg {
+            position: absolute;
+        }
+
+        #rect1:hover rect {
+            transform: scale(1.2);
+            transform-origin: center;
+        }
+
+        #frame {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-image: url('media/abstractMap1.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="frame">
+        <img src="media/abstractMap1.png" alt="">
+    </div> -->
+
+    <svg width="100%" height="100%" id="rect1">
+        <rect x="47%" y="38%" width="40" height="120" fill="white" />
+    </svg>
+    <svg width="100%" height="100%">
+        <rect x="49%" y="65%" width="30" height="27" fill="white" />
+    </svg>
+    <svg width="100%" height="100%">
+        <rect x="51%" y="77%" width="30" height="20" fill="white" />
+    </svg>
+
+    <script>
+
+        //get mouse location
+        /*
+        document.addEventListener('mousemove', logMousePosition);
+
+        function logMousePosition(event) {
+            console.log(`Mouse position: ${event.clientX}, ${event.clientY}`);
+        }*/
+    </script>
+</body>
+
+</html>
