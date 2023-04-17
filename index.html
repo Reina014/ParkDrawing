@@ -30,6 +30,15 @@
             background-position: center;
             background-attachment: fixed;
         }
+
+        .section:hover {
+            transform: scale(1.2);
+        }
+
+        .section {
+            transition: all 1s;
+            transform-origin: 50% 50%;
+        }
     </style>
 </head>
 
@@ -38,15 +47,15 @@
         <img src="media/abstractMap1.png" alt="">
     </div> -->
 
-    <svg width="100%" height="100%" id="rect1">
-        <rect x="47%" y="38%" width="40" height="120" fill="white" />
-    </svg>
     <svg width="100%" height="100%">
+        <rect x="47%" y="38%" width="40" height="120" fill="white" class="section" />
+    </svg>
+    <!-- <svg width="100%" height="100%">
         <rect x="49%" y="65%" width="30" height="27" fill="white" />
     </svg>
     <svg width="100%" height="100%">
         <rect x="51%" y="77%" width="30" height="20" fill="white" />
-    </svg>
+    </svg> -->
 
     <script>
 
