@@ -1,176 +1,26 @@
 <!DOCTYPE html>
+
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML Canvas Animation Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="stylesheet" href="page1styles.css">
+  </head>
 
-<head>
-    <title>Canvas with PNG Image Example</title>
-    <style>
-        canvas {
-            display: block;
-            margin: 0 auto;
-            border: 1px solid black;
-        }
-
-        body {
-            width: 100vw;
-            height: 100vh;
-
-
-            background-color: pink;
-
-        }
-
-        #canvas2 {
-            position: absolute;
-            top: 0;
-        }
-
-        #canvas1 {
-            position: absolute;
-            top: 0;
-        }
-
-        img {
-            display: none;
-        }
-
-        svg {
-            position: fixed;
-            z-index: 2;
-        }
-
-        .park1:hover {
-            transform: scale(1.2);
-        }
-
-        .park1 {
-            transition: all 1s;
-            transform-origin: center;
-        }
-
-        .park2:hover {
-            transform: scale(1.2);
-        }
-
-        .park2 {
-            transition: all 1s;
-            transform-origin: center;
-        }
-
-        .park3:hover {
-            transform: scale(1.2);
-        }
-
-        .park3 {
-            transition: all 1s;
-            transform-origin: center;
-        }
-    </style>
-</head>
-
-<body>
-    <canvas id="canvas1"></canvas>
-    <canvas id="canvas2"></canvas>
-    <img src="media/bg.png" alt="">
-    <img src="media/street.jpg" id="street" alt="">
+  <body>
+    <div id="container">
+      <div class="parks">
+        <div id="park1"></div>
+        <div id="park2"></div>
+        <div id="park3"></div>
+      </div>
+      <img class="backG" src="bg.png">
 
 
-    <svg width="100%" height="100%">
-        <rect x="45.6%" y="38%" width="130" height="590" fill="lightgreen" class="park1" />
-        <rect x="49%" y="68.8%" width="70" height="105" fill="lightgreen" class="park2" />
-        <rect x="47%" y="76.8%" width="110" height="60" fill="lightgreen" class="park3" />
-    </svg>
+    </div>
 
-    <script>
-        let width, height;
-        // set the number of canvas, scaled for screen resolution
-        let pxScale = window.devicePixelRatio;
-
-        let image = document.querySelector('#street');
-
-        // Get the canvas elements
-        var canvas1 = document.getElementById("canvas1");
-        var canvas2 = document.getElementById("canvas2");
-
-        // Get the 2D rendering contexts for the canvases
-        var ctx1 = canvas1.getContext("2d");
-        var ctx2 = canvas2.getContext("2d");
-        let imgScale = 40;
-        function setup() {
-            // full canvas size
-            width = window.innerWidth;
-            height = window.innerHeight;
-
-            // set the CSS display size
-            canvas2.style.width = width + 'px';
-            canvas2.style.height = height + 'px';
-
-            canvas1.style.width = width + 'px';
-            canvas1.style.height = height + 'px';
-
-            canvas2.width = width * pxScale;
-            canvas2.height = height * pxScale;
-
-            canvas1.width = width * pxScale;
-            canvas1.height = height * pxScale;
-
-            // normalize the coordinate system
-            ctx1.scale(pxScale, pxScale);
-            ctx2.scale(pxScale, pxScale);
-        }
-
-        function draw() {
-            ctx2.drawImage(document.querySelector('img'), 0, 0, width, height);
-
-        }
-
-        function drawbg() {
-            ctx1.drawImage(image, 0, 0, width / imgScale, (width / imgScale * image.height / image.width));
-
-            let imageData = ctx1.getImageData(0, 0, canvas1.width / imgScale, canvas1.height / imgScale);
-            let data = imageData.data;
-
-            ctx1.clearRect(0, 0, width, height);
-
-            // pixels by x, y coordinate
-            for (let y = 0; y < imageData.height; y++) { // for every row
-                for (let x = 0; x < imageData.width; x++) { // visit every column (pixel channel)
-                    let index = (x + y * imageData.width) * 4; // index position of every pixel
-
-                    let r = data[index + 0]; // red
-                    let g = data[index + 1]; // green
-                    let b = data[index + 2]; // blue
-                    let a = data[index + 3]; // alpha
-
-                    // apply RGB as fill color to subsequent shapes
-                    ctx1.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
-
-                    // draw circles at x, y
-                    ctx1.save();
-                    ctx1.translate(10, 10);
-                    ctx1.beginPath();
-                    ctx1.fillRect(x * imgScale / pxScale, y * imgScale / pxScale, 40, 40)
-                    //ctx1.arc(x * imgScale / pxScale, y * imgScale / pxScale, 8, 0, Math.PI * 2);
-                    ctx1.fill();
-                    ctx1.restore();
-
-
-                }
-            }
-        }
-
-        // wait for the DOM to load, including dependent resources
-        window.addEventListener('load', () => {
-            setup();
-            draw();
-            drawbg();
-        });
-
-        window.addEventListener('resize', () => {
-            setup();
-            draw();
-            drawbg();
-        });
-    </script>
-</body>
-
+    <canvas></canvas>
+    <script src="page1.js"></script>
+  </body>
 </html>
