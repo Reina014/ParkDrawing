@@ -9,8 +9,8 @@
     <style>
         #color-layer1 {
             position: absolute;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             transition: opacity 3s;
             opacity: 1;
 
@@ -18,20 +18,63 @@
 
         #color-layer2 {
             position: absolute;
-            width: 100vw;
-            height: 100vh;
-            transition: opacity 5s;
+            width: 100%;
+            height: 100%;
+
             opacity: 1;
         }
 
         .dirtyAir {
+
             background: rgb(72, 74, 103);
             background: linear-gradient(0deg, rgba(72, 74, 103, 1) 0%, rgba(255, 245, 179, 1) 78%);
+        }
+
+        .save {
+            background: rgb(72, 74, 103);
+            background: linear-gradient(0deg, rgba(255, 245, 179, 1) 0%, rgba(72, 74, 103, 1) 78%);
+
         }
 
         .cleanAir {
             background: rgb(236, 238, 174);
             background: radial-gradient(circle, rgba(236, 238, 174, 1) 0%, rgba(132, 216, 236, 1) 100%);
+        }
+
+        #subway {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            mix-blend-mode: overlay;
+            opacity: 1;
+            transition: opacity 3s;
+        }
+
+        #subway>img {
+            height: 100%;
+
+            object-fit: cover;
+            height: auto;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 4;
+            position: absolute;
+            mix-blend-mode: overlay;
+            opacity: 1;
+            transition: opacity 3s;
+        }
+
+        audio {
+            position: absolute;
+            z-index: 5;
         }
     </style>
 </head>
@@ -40,18 +83,71 @@
 
     <div id="color-layer2" class="cleanAir"></div>
     <div id="color-layer1" class="dirtyAir"></div>
+    <audio id="subwayNoise" src="media/Subway.m4a" autoplay controls></audio>
+
+    <!-- <div id="subway">
+        <img src="media/subwayDrawing.jpeg" alt="">
+    </div> -->
+
+    <img id="subway" src="media/subwayDrawing.jpeg" alt="">
     <script>
         let airLayer1 = document.querySelector('#color-layer1');
         let airLayer2 = document.querySelector('#color-layer2');
+        let subwayPic = document.querySelector('#subway');
+        let subwayNoise = document.querySelector('#subwayNoise');
+        let interval;
 
-        airLayer1.addEventListener('pointerdown', function () {
+        subwayPic.addEventListener('pointerdown', function () {
 
             setTimeout(function () {
                 airLayer1.style.opacity = "0";
+                subwayPic.style.opacity = "0";
             }, 2000)
 
-            setTimeout(function () { airLayer1.style.display = 'none'; }, 5000);
+            setTimeout(function () {
+
+                airLayer1.style.display = 'none';
+                subwayPic.style.display = 'none';
+                subwayNoise.pause();
+            }, 5000);
+
+            interval = setInterval(function () {
+                if (subwayNoise.volume > 0) {
+                    subwayNoise.volume -= 0.1;
+                } else {
+                    clearInterval(interval);
+                    subwayNoise.pause();
+                }
+            }, 1000);
         })
+
+        setTimeout(function () {
+            if (subwayPic.style.display != 'none') {
+                setTimeout(function () {
+                    airLayer1.style.opacity = "0";
+                    subwayPic.style.opacity = "0";
+                }, 2000)
+
+                setTimeout(function () {
+
+                    airLayer1.style.display = 'none';
+                    subwayPic.style.display = 'none';
+                    subwayNoise.pause();
+                }, 5000);
+
+                interval = setInterval(function () {
+                    if (subwayNoise.volume > 0) {
+                        subwayNoise.volume -= 0.1;
+                    } else {
+                        clearInterval(interval);
+                        subwayNoise.pause();
+                    }
+                }, 1000);
+            }
+        }, 24000);
+
+
+
     </script>
 
 </body>
