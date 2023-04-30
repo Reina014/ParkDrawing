@@ -17,7 +17,9 @@
         }
 
         #color-layer2 {
-            position: absolute;
+            top: 0;
+            left: 0;
+            position: fixed;
             width: 100%;
             height: 100%;
 
@@ -44,37 +46,77 @@
         #subway {
             width: 100%;
             height: 100%;
+            object-fit: cover;
             position: absolute;
             z-index: 4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             mix-blend-mode: overlay;
             opacity: 1;
             transition: opacity 3s;
         }
 
-        #subway>img {
-            height: 100%;
+        #interface {
 
+            width: auto;
+            height: 100%;
+            opacity: 1;
             object-fit: cover;
-            height: auto;
+            position: absolute;
+
         }
 
-        img {
+        #interfaceContainer {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: 4;
-            position: absolute;
-            mix-blend-mode: overlay;
-            opacity: 1;
-            transition: opacity 3s;
+            display: flex;
+            justify-content: center;
+
         }
 
         audio {
             position: absolute;
             z-index: 5;
+        }
+
+        #touchLayer {
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            border: 3px solid yellow;
+        }
+
+        #photos {
+            position: fixed;
+            border: 2px solid red;
+            position: relative;
+
+
+            width: 50px;
+            height: 50px;
+        }
+
+        #park1 {
+            position: absolute;
+            background: url(media/interface.png) no-repeat;
+            height: 100%;
+            width: 100%;
+            border: solid 1px #000;
+            padding-left: 10px;
+            box-sizing: border-box;
+            box-shadow: inset -350px 0 100px 0 #FFF;
+        }
+
+        @mixin faded($offset, $blur-radius, $spread-radius) {
+            &.faded-left:after {
+                box-shadow: inset $offset 0 $blur-radius (
+                    -$spread-radius
+                );
+        }
+
+        &.faded-right:after {
+            box-shadow: inset (-$offset) 0 $blur-radius (
+                -$spread-radius
+            );
+        }
         }
     </style>
 </head>
@@ -82,21 +124,65 @@
 <body>
 
     <div id="color-layer2" class="cleanAir"></div>
-    <div id="color-layer1" class="dirtyAir"></div>
-    <audio id="subwayNoise" src="media/Subway.m4a" autoplay controls></audio>
+    <div id="interfaceContainer">
 
-    <!-- <div id="subway">
-        <img src="media/subwayDrawing.jpeg" alt="">
-    </div> -->
+        <img id="interface" src="media/interface.png" alt="">
+        <canvas id="photos"></canvas>
+    </div>
 
-    <img id="subway" src="media/subwayDrawing.jpeg" alt="">
-    <script>
+    <!-- <div id="park1"></div> -->
+
+
+
+    <!-- <script>
+        let interface = document.querySelector('#interface');
+        let touchLayer = document.querySelector('#touchLayer');
+
+        const canvas = document.getElementById('photos');
+        const ctx = canvas.getContext('2d');
+
+        const squareSize = 50; // size of the square
+        const maxDistortion = 30; // maximum amount of distortion
+        const speed = 5; // speed of the square
+
+        let x = canvas.width / 2 - squareSize / 2; // x position of the square
+        let y = canvas.height / 2 - squareSize / 2; // y position of the square
+
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw the square
+        ctx.beginPath();
+        ctx.fillStyle = 'red';
+        ctx.rect(x, y, squareSize, squareSize);
+        ctx.fill();
+
+    </script> -->
+
+
+    <!-- <div id="color-layer1" class="dirtyAir"></div>
+    <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay controls></audio>
+    <img id="subway" src="media/subwayDrawing.jpeg" alt=""> -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <script>
         let airLayer1 = document.querySelector('#color-layer1');
         let airLayer2 = document.querySelector('#color-layer2');
         let subwayPic = document.querySelector('#subway');
         let subwayNoise = document.querySelector('#subwayNoise');
         let interval;
 
+        //if the user interact with the page
         subwayPic.addEventListener('pointerdown', function () {
 
             setTimeout(function () {
@@ -113,14 +199,17 @@
 
             interval = setInterval(function () {
                 if (subwayNoise.volume > 0) {
-                    subwayNoise.volume -= 0.1;
+                    subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);;
                 } else {
                     clearInterval(interval);
                     subwayNoise.pause();
                 }
             }, 1000);
+
+
         })
 
+        //if the user did not interact with the page
         setTimeout(function () {
             if (subwayPic.style.display != 'none') {
                 setTimeout(function () {
@@ -137,18 +226,21 @@
 
                 interval = setInterval(function () {
                     if (subwayNoise.volume > 0) {
-                        subwayNoise.volume -= 0.1;
+                        subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);
                     } else {
-                        clearInterval(interval);
                         subwayNoise.pause();
+                        clearInterval(interval);
+
                     }
                 }, 1000);
+
             }
         }, 24000);
 
 
 
-    </script>
+
+    </script> -->
 
 </body>
 
