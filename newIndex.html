@@ -54,23 +54,7 @@
             transition: opacity 3s;
         }
 
-        #interface {
 
-            width: auto;
-            height: 100%;
-            opacity: 1;
-            object-fit: cover;
-            position: absolute;
-
-        }
-
-        #interfaceContainer {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-
-        }
 
         audio {
             position: absolute;
@@ -105,59 +89,77 @@
             box-shadow: inset -350px 0 100px 0 #FFF;
         }
 
-        @mixin faded($offset, $blur-radius, $spread-radius) {
-            &.faded-left:after {
-                box-shadow: inset $offset 0 $blur-radius (
-                    -$spread-radius
-                );
+        .clickable {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            opacity: 0.5;
+            cursor: pointer;
         }
 
-        &.faded-right:after {
-            box-shadow: inset (-$offset) 0 $blur-radius (
-                -$spread-radius
-            );
-        }
+        #clickable-1 {
+            position: fixed;
+            top: 600px;
+            width: 200px;
+            height: 380px;
+            left: 60px;
         }
     </style>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div id="color-layer2" class="cleanAir"></div>
-    <div id="interfaceContainer">
+    <div id="interfaceContainer" class="mainImageContainer">
 
-        <img id="interface" src="media/interface.png" alt="">
-        <canvas id="photos"></canvas>
+        <img id="interface" class="mainImage" src="media/interface.png" alt="">
+        <div id="clickable-1" class="clickable"></div>
+        <div id="clickable-2" class="clickable"></div>
     </div>
 
     <!-- <div id="park1"></div> -->
 
 
 
-    <!-- <script>
-        let interface = document.querySelector('#interface');
-        let touchLayer = document.querySelector('#touchLayer');
+    <script>
+        // Get the image element
+        const image = document.getElementById("#interface");
 
-        const canvas = document.getElementById('photos');
-        const ctx = canvas.getContext('2d');
+        // Get the image container element
+        const imageContainer = document.getElementById("interfaceContainer");
 
-        const squareSize = 50; // size of the square
-        const maxDistortion = 30; // maximum amount of distortion
-        const speed = 5; // speed of the square
+        // Get the clickable elements
+        const clickableElements = document.querySelectorAll(".clickable");
 
-        let x = canvas.width / 2 - squareSize / 2; // x position of the square
-        let y = canvas.height / 2 - squareSize / 2; // y position of the square
+        // Attach click event listeners to each clickable element
+        clickableElements.forEach((clickable) => {
+            clickable.addEventListener("click", () => {
+                // Do something when the clickable is clicked
+                console.log('clicked');
+            });
 
-        // Clear the canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw the square
-        ctx.beginPath();
-        ctx.fillStyle = 'red';
-        ctx.rect(x, y, squareSize, squareSize);
-        ctx.fill();
 
-    </script> -->
+            // Calculate the position of the clickable relative to the image
+            const imageRect = image.getBoundingClientRect();
+            const clickableRect = clickable.getBoundingClientRect();
+            const position = {
+                x: clickableRect.left - imageRect.left,
+                y: clickableRect.top - imageRect.top
+            };
+
+            // Set the position of the clickable using CSS
+            clickable.style.left = position.x + "px";
+            clickable.style.top = position.y + "px";
+        });
+
+
+
+
+    </script>
 
 
     <!-- <div id="color-layer1" class="dirtyAir"></div>
