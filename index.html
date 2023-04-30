@@ -16,15 +16,6 @@
 
         }
 
-        #color-layer2 {
-            top: 0;
-            left: 0;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            opacity: 1;
-        }
-
         .dirtyAir {
 
             background: rgb(72, 74, 103);
@@ -37,10 +28,6 @@
 
         }
 
-        .cleanAir {
-            background: rgb(236, 238, 174);
-            background: radial-gradient(circle, rgba(236, 238, 174, 1) 0%, rgba(132, 216, 236, 1) 100%);
-        }
 
         #subway {
             width: 100%;
@@ -77,17 +64,6 @@
             height: 50px;
         }
 
-        #park1 {
-            position: absolute;
-            background: url(media/interface.png) no-repeat;
-            height: 100%;
-            width: 100%;
-            border: solid 1px #000;
-            padding-left: 10px;
-            box-sizing: border-box;
-            box-shadow: inset -350px 0 100px 0 #FFF;
-        }
-
         .clickable {
             position: absolute;
             width: 20px;
@@ -107,81 +83,46 @@
     </style>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="weather.css">
 </head>
 
 <body>
 
-    <div id="color-layer2" class="cleanAir"></div>
+    <div class="weatherLayer cleanAir"></div>
     <div id="interfaceContainer" class="mainImageContainer">
 
         <img id="interface" class="mainImage" src="media/interface.png" alt="">
-        <div id="clickable-1" class="clickable"></div>
-        <div id="clickable-2" class="clickable"></div>
+        <!-- <div id="clickable-1" class="clickable"></div>
+        <div id="clickable-2" class="clickable"></div> -->
     </div>
 
-    <!-- <div id="park1"></div> -->
+    <audio id="natureSound" src="media/sound/natureSound.m4a" loop></audio>
+
+
+    <script>
+        const clickableArea = document.querySelector('.clickable-area');
+        clickableArea.addEventListener('click', function () {
+            console.log('sampleImage is clicked')
+        });
+    </script>
+
+
+    <div id="color-layer1" class="dirtyAir"></div>
+    <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay controls></audio>
+    <img id="subway" src="media/subwayDrawing.jpeg" alt="">
+
+
 
 
 
     <script>
-        // Get the image element
-        const image = document.getElementById("#interface");
-
-        // Get the image container element
-        const imageContainer = document.getElementById("interfaceContainer");
-
-        // Get the clickable elements
-        const clickableElements = document.querySelectorAll(".clickable");
-
-        // Attach click event listeners to each clickable element
-        clickableElements.forEach((clickable) => {
-            clickable.addEventListener("click", () => {
-                // Do something when the clickable is clicked
-                console.log('clicked');
-            });
-
-
-
-            // Calculate the position of the clickable relative to the image
-            const imageRect = image.getBoundingClientRect();
-            const clickableRect = clickable.getBoundingClientRect();
-            const position = {
-                x: clickableRect.left - imageRect.left,
-                y: clickableRect.top - imageRect.top
-            };
-
-            // Set the position of the clickable using CSS
-            clickable.style.left = position.x + "px";
-            clickable.style.top = position.y + "px";
-        });
-
-
-
-
-    </script>
-
-
-    <!-- <div id="color-layer1" class="dirtyAir"></div>
-    <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay controls></audio>
-    <img id="subway" src="media/subwayDrawing.jpeg" alt=""> -->
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <script>
         let airLayer1 = document.querySelector('#color-layer1');
         let airLayer2 = document.querySelector('#color-layer2');
         let subwayPic = document.querySelector('#subway');
         let subwayNoise = document.querySelector('#subwayNoise');
         let interval;
+
+        let natureSound = document.querySelector('#natureSound');
 
         //if the user interact with the page
         subwayPic.addEventListener('pointerdown', function () {
@@ -200,10 +141,14 @@
 
             interval = setInterval(function () {
                 if (subwayNoise.volume > 0) {
-                    subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);;
+                    subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);
+                    natureSound.volume = Math.max(1, subwayNoise.volume + 0.1);
+                    natureSound.play();
+
                 } else {
                     clearInterval(interval);
                     subwayNoise.pause();
+
                 }
             }, 1000);
 
@@ -230,6 +175,7 @@
                         subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);
                     } else {
                         subwayNoise.pause();
+                        natureSound.play();
                         clearInterval(interval);
 
                     }
@@ -241,7 +187,7 @@
 
 
 
-    </script> -->
+    </script>
 
 </body>
 
