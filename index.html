@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Park Drawing New</title>
     <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
         #color-layer1 {
             top: 0;
             left: 0;
@@ -83,10 +88,73 @@
             top: 50%;
             left: 60%;
             position: absolute;
-            width: 150px;
-            height: 300px;
-            background-color: rgba(150, 189, 198, 0.6);
+            width: 180px;
+            height: 250px;
+            background-color: rgba(255, 255, 255, 0.6);
             border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+            opacity: 0;
+            transition: opacity 3s;
+
+        }
+
+
+        a:visited {
+            color: #19376D;
+        }
+
+        a {
+            color: #19376D;
+        }
+
+        .buttons {
+            margin: 10px;
+            width: 140px;
+            height: 35px;
+            padding: 10px;
+            background-color: #acb1d6c3;
+            border: 2px solid slategrey;
+            border-radius: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #bigContainer {
+            width: 100%;
+
+            aspect-ratio: 16/10;
+
+            overflow: hidden;
+        }
+
+        #slide {
+            border: 1px red solid;
+            position: relative;
+            left: 0;
+            top: 0;
+            transition: transform 0.5s;
+
+            width: auto;
+            height: 100%;
+            opacity: 1;
+            object-fit: cover;
+        }
+
+        .slide:hover {
+            transform: translateX(0);
+            transition: transform 0.5s;
+        }
+
+        #phone {
+            left: -20%;
+            transition: transform 5s;
         }
     </style>
 
@@ -96,47 +164,79 @@
 
 <body>
 
-    <div class="weatherLayer cleanAir"></div>
-    <div id="interfaceContainer" class="mainImageContainer">
+    <div id="bigContainer">
+        <div class="weatherLayer cleanAir"></div>
+        <div id="interfaceContainer" class="mainImageContainer">
 
-        <img id="interface" class="mainImage" src="media/interface.png" alt="">
-        <!-- <div id="clickable-1" class="clickable"></div>
-        <div id="clickable-2" class="clickable"></div> -->
+            <img id="interface" class="mainImage" src="media/interface.png" alt="">
+
+
+            <img class="mainImage" id="phone" src="media/phone.png" alt="">
+
+        </div>
+
+
+
+        <audio id="natureSound" src="media/sound/natureSound.m4a" loop></audio>
+
+
+        <div class="interactionPannel">
+            <div class="buttons">
+                <a href="jazz.html">Jazz Band</a>
+            </div>
+            <div class="buttons">
+                <a href="iceCream.html">Ice Cream Booth</a>
+            </div>
+            <div class="buttons">
+                <a href="pigeon.html">Pigeon & Squirrel Man</a>
+            </div>
+        </div>
+
+        <audio id="shutter" src="media/sound/shutter.m4a"></audio>
     </div>
 
-    <audio id="natureSound" src="media/sound/natureSound.m4a" loop></audio>
-
-
-    <script>
-        const clickableArea = document.querySelector('.clickable-area');
-        clickableArea.addEventListener('click', function () {
-            console.log('sampleImage is clicked')
-        });
-    </script>
-
-
-    <!-- <div id="color-layer1" class="dirtyAir"></div>
+    <div id="color-layer1" class="dirtyAir"></div>
     <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay></audio>
-    <img id="subway" src="media/subwayDrawing.jpeg" alt=""> -->
+    <img id="subway" src="media/subwayDrawing.jpeg" alt="">
 
 
-    <div class="interactionPannel">
-        <div class="buttons">
-            <a href="jazz.html">Jazz Band</a>
-        </div>
-        <div class="buttons">
-            <a href="iceCream.html">Ice Cream Booth</a>
-        </div>
-        <div class="buttons">
-            <a href="pigeon.html">Pigeon & Squirrel Man</a>
-        </div>
-    </div>
+
+
 
     <script>
+        let interfaceContainer = document.querySelector('#interfaceContainer');
+        let interactionPannel = document.querySelector('.interactionPannel');
+        interfaceContainer.addEventListener('pointerover', function () {
+            interactionPannel.style.opacity = 1;
+
+        })
+        interfaceContainer.addEventListener('pointerout', function () {
+            interfaceContainer.addEventListener('pointerout', function () {
+                interactionPannel.style.opacity = 0;
+            })
+
+        })
+
+        let movingPhone = document.querySelector('#phone');
+        let ranNum = Math.random() * window.innerWidth * .5;
+        let shutterSound = document.querySelector('#shutter')
+        movingPhone.addEventListener('pointerdown', function () {
+            shutterSound.play();
+        })
+
+
+        setInterval(function () {
+            const left = parseInt(getComputedStyle(movingPhone).getPropertyValue('left'));
+            movingPhone.style.transform = 'translateX(' + ranNum + 'px)';
+
+            ranNum = Math.random() * window.innerWidth * .5;
+        }, 7000);
+
+
 
     </script>
 
-    <!-- 
+
     <script>
         let airLayer1 = document.querySelector('#color-layer1');
         let airLayer2 = document.querySelector('#color-layer2');
@@ -209,7 +309,7 @@
 
 
 
-    </script> -->
+    </script>
 
 </body>
 

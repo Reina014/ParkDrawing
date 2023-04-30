@@ -1,6 +1,5 @@
 .mainImage{
     top: 0;
-    
     width: auto;
     height: 100%;
     opacity: 1;
@@ -13,4 +12,5 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
