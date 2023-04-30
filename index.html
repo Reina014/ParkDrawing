@@ -8,12 +8,14 @@
     <title>Park Drawing New</title>
     <style>
         #color-layer1 {
-            position: absolute;
+            top: 0;
+            left: 0;
+            position: fixed;
             width: 100%;
             height: 100%;
-            transition: opacity 3s;
             opacity: 1;
-
+            object-fit: cover;
+            transition: opacity 3s;
         }
 
         .dirtyAir {
@@ -22,14 +24,10 @@
             background: linear-gradient(0deg, rgba(72, 74, 103, 1) 0%, rgba(255, 245, 179, 1) 78%);
         }
 
-        .save {
-            background: rgb(72, 74, 103);
-            background: linear-gradient(0deg, rgba(255, 245, 179, 1) 0%, rgba(72, 74, 103, 1) 78%);
-
-        }
-
 
         #subway {
+            left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -80,6 +78,16 @@
             height: 380px;
             left: 60px;
         }
+
+        .interactionPannel {
+            top: 50%;
+            left: 60%;
+            position: absolute;
+            width: 150px;
+            height: 300px;
+            background-color: rgba(150, 189, 198, 0.6);
+            border-radius: 10px;
+        }
     </style>
 
     <link rel="stylesheet" href="style.css">
@@ -107,14 +115,28 @@
     </script>
 
 
-    <div id="color-layer1" class="dirtyAir"></div>
-    <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay controls></audio>
-    <img id="subway" src="media/subwayDrawing.jpeg" alt="">
+    <!-- <div id="color-layer1" class="dirtyAir"></div>
+    <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay></audio>
+    <img id="subway" src="media/subwayDrawing.jpeg" alt=""> -->
 
 
+    <div class="interactionPannel">
+        <div class="buttons">
+            <a href="jazz.html">Jazz Band</a>
+        </div>
+        <div class="buttons">
+            <a href="iceCream.html">Ice Cream Booth</a>
+        </div>
+        <div class="buttons">
+            <a href="pigeon.html">Pigeon & Squirrel Man</a>
+        </div>
+    </div>
 
+    <script>
 
+    </script>
 
+    <!-- 
     <script>
         let airLayer1 = document.querySelector('#color-layer1');
         let airLayer2 = document.querySelector('#color-layer2');
@@ -187,7 +209,7 @@
 
 
 
-    </script>
+    </script> -->
 
 </body>
 
