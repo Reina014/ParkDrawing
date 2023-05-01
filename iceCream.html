@@ -26,8 +26,9 @@
             scale: .3;
 
             opacity: 0;
-            transition: opacity 3s;
-            transition: transform 3s;
+
+            transition: opacity 3s, transform 3s;
+
         }
     </style>
 </head>
@@ -45,14 +46,20 @@
         let cash = document.querySelector('#cash');
 
         mainPage.addEventListener('pointerdown', function () {
+            console.log('clicked');
             cash.style.opacity = 1;
 
             cash.style.transform = 'rotateZ(90deg) scale(.5) translateX(30px)';
 
             setTimeout(function () {
                 cash.style.opacity = 0;
-            }, 2000);
-        })  
+                cash.style.transform = 'rotateZ(0deg) scale(.5) translateX(0px)';
+
+            }, 4000);
+
+        })
+
+
     </script>
 </body>
 
