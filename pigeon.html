@@ -8,13 +8,52 @@
     <title>Pigeon Man</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="weather.css">
+    <style>
+        #pigeon {
+            transition: transform 2s;
+        }
+    </style>
 </head>
 
 <body>
     <div class="weatherLayer cleanAir"></div>
     <div class="mainImageContainer">
-        <img class="mainImage" src="media/pigeon.png">
+        <img id="bg" class="mainImage" src="media/pigeon.png">
+        <img id="pigeon" class="mainImage" src="media/pigeon1.png" alt="">
     </div>
+
+    <audio id="coo" src="media/sound/pigeonCoo.mp3"></audio>
+
+    <audio id="natureSound" src="media/sound/natureSound.m4a" loop autoplay></audio>
+    <script>
+        let pigeon = document.querySelector('#pigeon');
+        let bg = document.querySelector('#bg');
+        let coo = document.querySelector('#coo');
+
+        pigeon.addEventListener('pointerdown', function () {
+            let jumpY = Math.random() * window.innerHeight * .1;
+            let jumpX = Math.random() * window.innerWidth * .2;
+            pigeon.style.transform = 'translateX(-' + jumpX + 'px) translateY(-' + jumpY + 'px)';
+
+            //randomly make the pigeon coo
+            let num = Math.floor(Math.random() * 2);
+            console.log(num);
+            if (num == 1) {
+                coo.play();
+
+            }
+
+
+            setTimeout(function () {
+                jumpY = Math.random() * window.innerHeight * .05;
+                pigeon.style.transform = 'translateX(-' + jumpX + 'px) translateY(-' + jumpY + 'px)';
+            }, 1800);
+        })
+
+
+        document.querySelector('#natureSound').play();
+
+    </script>
 </body>
 
 </html>
