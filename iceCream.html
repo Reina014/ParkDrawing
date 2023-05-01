@@ -58,7 +58,7 @@
 
 <body>
     <div class="weatherLayer cleanAir"></div>
-    <div class="mainImageContainer">
+    <div class="mainImageContainer" id="mainPage">
         <img id="mainImage" class="mainImage" src="media/iceCream.png">
         <img id="cash" class="mainImage" src="media/cash.png" alt="">
         <div id="returnButton">
@@ -70,13 +70,15 @@
 
     <audio id="cashRegister" src="media/sound/cashRegister.mp3"></audio>
 
+    <audio id="natureSound" src="media/sound/natureSound.m4a" loop autoplay></audio>
+
     <script>
-        let mainPage = document.querySelector('#mainImage');
+        let mainPage = document.querySelector('#mainPage');
         let cash = document.querySelector('#cash');
         let cashRegister = document.querySelector('#cashRegister');
 
         mainPage.addEventListener('pointerdown', function () {
-            //cashRegister.play();
+            cashRegister.play();
             cash.style.opacity = 1;
 
             cash.style.transform = 'rotateZ(90deg) scale(.5) translateX(30px)';
@@ -89,6 +91,7 @@
 
         })
 
+        document.querySelector('#natureSound').play();
 
     </script>
 </body>
