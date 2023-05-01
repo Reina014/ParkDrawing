@@ -165,8 +165,8 @@
 <body>
 
     <div id="bigContainer">
-    <!--    <div class="weatherLayer cleanAir"></div> -->
-<canvas id="c2" width="" height=""></canvas>
+        <!--    <div class="weatherLayer cleanAir"></div> -->
+        <canvas id="c2" width="" height=""></canvas>
         <div id="interfaceContainer" class="mainImageContainer">
 
             <img id="interface" class="mainImage" src="media/interface.png" alt="">
@@ -196,13 +196,16 @@
         <audio id="shutter" src="media/sound/shutter.m4a"></audio>
     </div>
 
-    <div id="color-layer1" class="dirtyAir"></div>
-    <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay></audio>
-    <img id="subway" src="media/subwayDrawing.jpeg" alt="">
+    <div id="trainLayer">
+        <div id="color-layer1" class="dirtyAir"></div>
+        <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay></audio>
+        <img id="subway" src="media/subwayDrawing.jpeg" alt="">
+
+    </div>
 
 
 
-<script src='weatherAPI.js'></script>
+    <script src='weatherAPI.js'></script>
 
     <script>
         let interfaceContainer = document.querySelector('#interfaceContainer');
@@ -310,6 +313,8 @@
             }, 24000);
 
 
+        } else {
+            document.querySelector('#trainLayer').style.display = 'none';
         }
 
     </script>
