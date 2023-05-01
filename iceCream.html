@@ -8,13 +8,52 @@
     <title>Ice Cream Booth</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="weather.css">
+    <style>
+        canvas {
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            z-index: 4;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        #cash {
+            position: absolute;
+            left: 30%;
+            top: 10%;
+            z-index: 5;
+            scale: .3;
+
+            opacity: 0;
+            transition: opacity 3s;
+            transition: transform 3s;
+        }
+    </style>
 </head>
 
 <body>
     <div class="weatherLayer cleanAir"></div>
     <div class="mainImageContainer">
-        <img class="mainImage" src="media/iceCream.png">
+        <img id="mainImage" class="mainImage" src="media/iceCream.png">
+        <img id="cash" class="mainImage" src="media/cash.png" alt="">
     </div>
+
+
+    <script>
+        let mainPage = document.querySelector('#mainImage');
+        let cash = document.querySelector('#cash');
+
+        mainPage.addEventListener('pointerdown', function () {
+            cash.style.opacity = 1;
+
+            cash.style.transform = 'rotateZ(90deg) scale(.5) translateX(30px)';
+
+            setTimeout(function () {
+                cash.style.opacity = 0;
+            }, 2000);
+        })  
+    </script>
 </body>
 
 </html>
