@@ -17,6 +17,30 @@
             opacity: 1;
             transition: opacity 1s ease-out;
         }
+
+        .mainImageContainer {}
+
+        .mainImage {}
+
+        #returnButton {
+            position: absolute;
+            top: 80%;
+            left: 5%;
+        }
+
+        #returnImg {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 1000px;
+            border: 2px solid rgb(63, 70, 81);
+            width: 20%;
+            transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+
+        #returnImg:hover {
+            box-shadow: rgba(0, 0, 0, 0.482) 0px 3px 8px;
+            border-radius: 1000px;
+            border: 2px solid black;
+        }
     </style>
 </head>
 
@@ -24,13 +48,20 @@
     <div class="weatherLayer cleanAir"></div>
     <div class="mainImageContainer">
         <img class="mainImage" src="media/jazz.png">
+        <div id="returnButton">
+            <a href="index.html">
+                <img id="returnImg" src="media/btn1.png" alt="">
+            </a>
+        </div>
     </div>
     <audio src="media/sound/jazzMusic.mp3" autoplay loop></audio>
     <audio src="media/sound/natureSound.m4a" autoplay loop></audio>
 
     <canvas id="notes"></canvas>
 
+
     <script>
+
         // Get a reference to the canvas element
         const canvas = document.getElementById('notes');
         let noteArray = ['note1.png', 'note2.png', 'note3.png']

@@ -20,14 +20,14 @@
 
         #cash {
             position: absolute;
-            left: 30%;
-            top: 10%;
+            left: 31.5%;
+            top: 13%;
             z-index: 5;
             scale: .3;
 
             opacity: 0;
-            transition: opacity 3s;
-            transition: transform 3s;
+            transition: opacity 3s, transform 3s;
+
         }
     </style>
 </head>
@@ -39,20 +39,28 @@
         <img id="cash" class="mainImage" src="media/cash.png" alt="">
     </div>
 
+    <audio id="cashRegister" src="media/sound/cashRegister.mp3"></audio>
 
     <script>
         let mainPage = document.querySelector('#mainImage');
         let cash = document.querySelector('#cash');
+        let cashRegister = document.querySelector('#cashRegister');
 
         mainPage.addEventListener('pointerdown', function () {
+            //cashRegister.play();
             cash.style.opacity = 1;
 
             cash.style.transform = 'rotateZ(90deg) scale(.5) translateX(30px)';
 
             setTimeout(function () {
                 cash.style.opacity = 0;
-            }, 2000);
-        })  
+                cash.style.transform = 'rotateZ(0deg) scale(.5) translateX(0px)';
+
+            }, 4000);
+
+        })
+
+
     </script>
 </body>
 

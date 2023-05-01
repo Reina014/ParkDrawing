@@ -232,55 +232,23 @@
 
             ranNum = Math.random() * window.innerWidth * .5;
         }, 7000);
-
-
-
     </script>
 
 
     <script>
-        let airLayer1 = document.querySelector('#color-layer1');
-        let airLayer2 = document.querySelector('#color-layer2');
-        let subwayPic = document.querySelector('#subway');
-        let subwayNoise = document.querySelector('#subwayNoise');
-        let interval;
 
-        let natureSound = document.querySelector('#natureSound');
+        if (!localStorage.getItem('status')) {
+            let airLayer1 = document.querySelector('#color-layer1');
+            let airLayer2 = document.querySelector('#color-layer2');
+            let subwayPic = document.querySelector('#subway');
+            let subwayNoise = document.querySelector('#subwayNoise');
+            let interval;
 
-        //if the user interact with the page
-        subwayPic.addEventListener('pointerdown', function () {
+            let natureSound = document.querySelector('#natureSound');
 
-            setTimeout(function () {
-                airLayer1.style.opacity = "0";
-                subwayPic.style.opacity = "0";
-            }, 2000)
+            //if the user interact with the page
+            subwayPic.addEventListener('pointerdown', function () {
 
-            setTimeout(function () {
-
-                airLayer1.style.display = 'none';
-                subwayPic.style.display = 'none';
-                subwayNoise.pause();
-            }, 5000);
-
-            interval = setInterval(function () {
-                if (subwayNoise.volume > 0) {
-                    subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);
-                    natureSound.volume = Math.max(1, subwayNoise.volume + 0.1);
-                    natureSound.play();
-
-                } else {
-                    clearInterval(interval);
-                    subwayNoise.pause();
-
-                }
-            }, 1000);
-
-
-        })
-
-        //if the user did not interact with the page
-        setTimeout(function () {
-            if (subwayPic.style.display != 'none') {
                 setTimeout(function () {
                     airLayer1.style.opacity = "0";
                     subwayPic.style.opacity = "0";
@@ -296,19 +264,53 @@
                 interval = setInterval(function () {
                     if (subwayNoise.volume > 0) {
                         subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);
-                    } else {
-                        subwayNoise.pause();
+                        natureSound.volume = Math.max(1, subwayNoise.volume + 0.1);
                         natureSound.play();
+
+                    } else {
                         clearInterval(interval);
+                        subwayNoise.pause();
 
                     }
                 }, 1000);
 
-            }
-        }, 24000);
+                localStorage.setItem('status', 'visited');
+
+            })
+
+            //if the user did not interact with the page
+            setTimeout(function () {
+                if (subwayPic.style.display != 'none') {
+                    setTimeout(function () {
+                        airLayer1.style.opacity = "0";
+                        subwayPic.style.opacity = "0";
+                    }, 2000)
+
+                    setTimeout(function () {
+
+                        airLayer1.style.display = 'none';
+                        subwayPic.style.display = 'none';
+                        subwayNoise.pause();
+                    }, 5000);
+
+                    interval = setInterval(function () {
+                        if (subwayNoise.volume > 0) {
+                            subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);
+                        } else {
+                            subwayNoise.pause();
+                            natureSound.play();
+                            clearInterval(interval);
+
+                        }
+                    }, 1000);
+
+                }
+
+                localStorage.setItem('status', 'visited');
+            }, 24000);
 
 
-
+        }
 
     </script>
 
