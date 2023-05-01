@@ -39,13 +39,15 @@
         <img id="cash" class="mainImage" src="media/cash.png" alt="">
     </div>
 
+    <audio id="cashRegister" src="media/sound/cashRegister.mp3"></audio>
 
     <script>
         let mainPage = document.querySelector('#mainImage');
         let cash = document.querySelector('#cash');
+        let cashRegister = document.querySelector('#cashRegister');
 
         mainPage.addEventListener('pointerdown', function () {
-            console.log('clicked');
+            cashRegister.play();
             cash.style.opacity = 1;
 
             cash.style.transform = 'rotateZ(90deg) scale(.5) translateX(30px)';
