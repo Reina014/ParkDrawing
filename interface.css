@@ -22,7 +22,9 @@ body {
   z-index: 1;
   object-fit: cover;
 }
-
+#trainLayer{
+  z-index:400;
+}
   .mainImage{
       top: 0;
       width: auto;
@@ -54,7 +56,6 @@ body {
 }
 
 .dirtyAir {
-
     background: rgb(72, 74, 103);
     background: linear-gradient(0deg, rgba(72, 74, 103, 1) 0%, rgba(255, 245, 179, 1) 78%);
 }
@@ -67,7 +68,7 @@ body {
     height: 100%;
     object-fit: cover;
     position: absolute;
-    z-index: 4;
+    z-index: 1000;
     mix-blend-mode: overlay;
     opacity: 1;
     transition: opacity 3s;
@@ -186,7 +187,7 @@ a {
 #phone {
     left: -20%;
     transition: transform 5s;
-    z-index: 200;
+    z-index: 20;
 }
 
 .introBtn {

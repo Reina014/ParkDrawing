@@ -18,7 +18,6 @@ function setup() {
 console.log("canvas width: " + canvas.style.width);
 //console.log(width);
   context.scale(pxScale, pxScale);
-  context.fillStyle='#F3ECE7';
   context.fillRect(0,0,canvas.width,canvas.height);
 }
 
@@ -42,8 +41,6 @@ getData=async()=>{
     //console.log(weatherC);
     console.log(weatherC[0]);
     let wcNum=weatherC[0];
-    console.log(typeof wcNum);
-    //lets draw now lol
     //GRADIENT
     var gradient2=context.createLinearGradient(0,0,0,canvas.height/2);
     //clear skies
@@ -111,11 +108,7 @@ getData=async()=>{
     }
   }
 
-window.addEventListener('load', getData);
-window.addEventListener('load', setup);
-window.addEventListener('resize', setup);
-window.addEventListener('resize', weatherCodeData);
-window.addEventListener('load', weatherCodeData);
+
 
 /*
 WEATHER CODE KEY

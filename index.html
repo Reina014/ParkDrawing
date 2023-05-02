@@ -8,6 +8,8 @@
     <title>Park Drawing New</title>
 
     <link rel="stylesheet" href="interface.css">
+    <link rel="stylesheet" href="weather.css">
+
     <style>
         .box {
             border: red 3px solid;
@@ -43,9 +45,9 @@
 
     <div id="container">
 
+        <div class="weatherLayer" id="cleanAir"></div>
 
         <img class="backG" src="media/interface/interface.png"></img>
-
         <div id="areaBoxes">
             <div id="box1" class="box"></div>
             <div id="box2" class="box"></div>
@@ -90,15 +92,11 @@
             </a>
         </div>
 
-        <canvas id="c2" width="" height=""></canvas>
-
-
     </div>
 
 
 
     <script src="interface.js"></script>
-    <script src='weatherAPI.js'></script>
 
 
 </body>

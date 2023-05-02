@@ -1,27 +1,4 @@
-let canvasW = document.querySelector('.weathercanvasW');
-const context = canvasW.getContext('2d');
-
-let width;
-let height;
-
-// set the number of canvasW pixels, scaled for screen resolution
-let pxScale = window.devicePixelRatio;
-
-function setup() {
-  width=window.innerWidth;
-  height=window.innerHeight;
-  canvasW.style.width = width + 'px';
-  canvasW.style.height = height + 'px';
-
-  canvasW.width = width * pxScale;
-  canvasW.height = height * pxScale;
-console.log("canvasW width: " + canvasW.style.width);
-//console.log(width);
-  context.scale(pxScale, pxScale);
-}
-
-context.fillStyle='#F3ECE7';
-context.fillRect(0,0,canvasW.width,canvasW.height);
+let weatherLayer = document.querySelector('.weatherLayer');
 
 getData=async()=>{
 //this one gives the weather code
@@ -38,21 +15,18 @@ getData=async()=>{
     console.log("Error: "+ response.status);
   }
 }
-  weatherCodeData=(response)=>  {
+  weatherCodeData=(response)=> {
     let weatherC=response.daily.weathercode;
     //console.log(weatherC);
     console.log(weatherC[0]);
     let wcNum=weatherC[0];
     console.log(typeof wcNum);
     //lets draw now lol
-    //GRADIENT
-    var gradient2=context.createLinearGradient(0,0,0,canvasW.height/2);
+
     //clear skies
-    if (wcNum==0 || wcNum==1){
-      gradient2.addColorStop(0,"#87C1FF");
-      gradient2.addColorStop(1,"#A3E3FF");
-      context.fillStyle=gradient2;
-      context.fillRect(0,0,canvasW.width,canvasW.height);
+    if (wcNum==51 || wcNum==1){
+       weatherLayer.classList.remove("cleanAir");
+       weatherLayer.classList.add("weather1");
     }
     //partly cloudy 2
     else if (wcNum==2){
@@ -112,11 +86,9 @@ getData=async()=>{
     }
   }
 
-window.addEventListener('load', getData);
-window.addEventListener('load', setup);
-window.addEventListener('resize', setup);
+window.addEventListener('onload', getData);
 window.addEventListener('resize', weatherCodeData);
-window.addEventListener('load', weatherCodeData);
+window.addEventListener('onload', weatherCodeData);
 
 /*
 WEATHER CODE KEY
