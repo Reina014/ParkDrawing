@@ -15,7 +15,7 @@ function setup() {
 
   canvas.width = width * pxScale;
   canvas.height = height * pxScale;
-//console.log("canvas width: " + canvas.style.width);
+console.log("canvas width: " + canvas.style.width);
 //console.log(width);
   context.scale(pxScale, pxScale);
 }
