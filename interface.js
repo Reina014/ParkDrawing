@@ -49,18 +49,30 @@ const height = window.innerHeight;
 const third = width / 3;
 const thirdY = height / 3;
 
-let areaBox = document.
+let areaBoxes = document.querySelector('#areaBoxes');
+let box1 = document.querySelector('#box1');
+let box2 = document.querySelector('#box2');
+let box3 = document.querySelector('#box3');
 
-movingPhone.addEventListener('pointerover', function (event) {
-    const x = event.clientX;
-    const y = event.clientY;
+box1.style.width = width/3;
+box1.style.height = height;
+box2.style.width = third*2;
+box2.style.height = height;
+box3.style.width = width;
+box3.style.height = height;
+
+
+areaBoxes.addEventListener('pointerover', function (event) {
+    console.log('hovering the page!!')
+    let x = event.clientX;
+    let y = event.clientY;
 
     //for ice cream booth
-    if (x < third && y > thirdY * 2) {
+    if (x < third) {
         navBtn1.style.opacity = 1;
         navBtn2.style.opacity = 0;
         navBtn3.style.opacity = 0;
-    } else if (third < x && x < third * 2) {
+    } else if (x > third && x < third * 2) {
         navBtn1.style.opacity = 0;
         navBtn2.style.opacity = 1;
         navBtn3.style.opacity = 0;
@@ -71,7 +83,7 @@ movingPhone.addEventListener('pointerover', function (event) {
     }
 })
 
-movingPhone.addEventListener('pointerout', function () {
+areaBoxes.addEventListener('pointerout', function () {
     navBtn1.style.opacity = 0;
     navBtn2.style.opacity = 0;
     navBtn3.style.opacity = 0;
