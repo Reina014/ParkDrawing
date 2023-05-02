@@ -8,11 +8,7 @@
     <title>Park Drawing New</title>
     <style>
         body {
-          margin:0;
-          height:100vh;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
+
         }
 
         #color-layer1 {
@@ -133,10 +129,12 @@
 
         #bigContainer {
             width: 100%;
-
-            aspect-ratio: 16/10;
-
             overflow: hidden;
+            margin:0;
+            height:100vh;
+            aspect-ratio: 16/9;
+            justify-content: center;
+            object-fit: cover;
         }
 
         #slide {
@@ -174,10 +172,14 @@
         <!--    <div class="weatherLayer cleanAir"></div> -->
         <div id="interfaceContainer" class="mainImageContainer">
 
-            <img id="interface" class="mainImage" src="media/interface.png" alt="">
+    <!--    <div class="weatherLayer cleanAir"></div> -->
+    <canvas id="c2" width="" height=""></canvas>
+    <div id="interfaceContainer" class="mainImageContainer">
+
+        <img id="interface" class="mainImage" src="media/interface.png" alt="">
 
 
-            <img class="mainImage" id="phone" src="media/phone.png" alt="">
+        <img class="mainImage" id="phone" src="media/phone.png" alt="">
 
         </div>
 
@@ -199,11 +201,27 @@
         <audio id="shutter" src="media/sound/shutter.m4a"></audio>
     </div>
 
+    <audio id="natureSound" src="media/sound/natureSound.m4a" loop></audio>
+
+    <audio id="shutter" src="media/sound/shutter.m4a"></audio>
+
     <div id="trainLayer">
         <div id="color-layer1" class="dirtyAir"></div>
         <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay></audio>
         <img id="subway" src="media/subwayDrawing.jpeg" alt="">
 
+    </div>
+
+    <div id="btn1" class="introBtn">
+        <img src="media/iceCreamIntro.png" alt="">
+    </div>
+
+    <div id="btn2" class="introBtn">
+        <img src="media/jazzIntro.png" alt="">
+    </div>
+
+    <div id="btn3" class="introBtn">
+        <img src="media/pigeonIntro.png" alt="">
     </div>
 
     <script src='weatherAPI.js'></script>
