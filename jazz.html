@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="interface.css">
     <link rel="stylesheet" href="weather.css">
     <style>
-        canvas {
+        #notes {
             position: absolute;
             top: 30%;
             left: 30%;
@@ -49,7 +49,9 @@
 </head>
 
 <body>
-    <div class="weatherLayer cleanAir"></div>
+  <div id="container">
+    <canvas id="c2" class="weatherCanvas" width="" height=""></canvas>
+
     <div class="mainImageContainer">
         <img class="mainImage" src="media/jazzPage/jazz.png">
         <div id="returnButton">
@@ -62,7 +64,7 @@
     <audio src="media/sound/natureSound.m4a" autoplay loop></audio>
 
     <canvas id="notes"></canvas>
-
+</div>
 
     <script>
 
@@ -175,6 +177,9 @@
             window.requestAnimationFrame(animateNote);
         });
     </script>
+
+    <script src='weatherAPI.js'></script>
+
 </body>
 
 </html>
