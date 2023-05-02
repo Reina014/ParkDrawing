@@ -8,8 +8,11 @@
     <title>Park Drawing New</title>
     <style>
         body {
-            width: 100vw;
-            height: 100vh;
+          margin:0;
+          height:100vh;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
         }
 
         #color-layer1 {
@@ -43,7 +46,9 @@
             transition: opacity 3s;
         }
 
-
+        canvas{
+          display: cover;
+        }
 
         audio {
             position: absolute;
@@ -163,10 +168,10 @@
 </head>
 
 <body>
+  <canvas id="c2" width="" height=""></canvas>
 
     <div id="bigContainer">
         <!--    <div class="weatherLayer cleanAir"></div> -->
-        <canvas id="c2" width="" height=""></canvas>
         <div id="interfaceContainer" class="mainImageContainer">
 
             <img id="interface" class="mainImage" src="media/interface.png" alt="">
@@ -175,8 +180,6 @@
             <img class="mainImage" id="phone" src="media/phone.png" alt="">
 
         </div>
-
-
 
         <audio id="natureSound" src="media/sound/natureSound.m4a" loop></audio>
 
@@ -202,8 +205,6 @@
         <img id="subway" src="media/subwayDrawing.jpeg" alt="">
 
     </div>
-
-
 
     <script src='weatherAPI.js'></script>
 
