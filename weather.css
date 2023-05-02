@@ -5,7 +5,10 @@
 }
 
 /* for a sunny day */
-
+.weather1{
+  background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(230,209,175,1) 38%, rgba(148,187,233,1) 100%);
+}
 /* for a cloudy day */
 
 /* for a rainy day */
