@@ -44,42 +44,40 @@ navBtn3.addEventListener('touchstart', function () {
 })
 
 
-const width = window.innerWidth;
-const height = window.innerHeight;
-const third = width / 3;
-const thirdY = height / 3;
 
 let areaBoxes = document.querySelector('#areaBoxes');
-let box1 = document.querySelector('#box1');
-let box2 = document.querySelector('#box2');
-let box3 = document.querySelector('#box3');
 
-box1.style.width = width/3;
-box1.style.height = height;
-box2.style.width = third*2;
-box2.style.height = height;
-box3.style.width = width;
-box3.style.height = height;
 
 
 areaBoxes.addEventListener('pointerover', function (event) {
-    console.log('hovering the page!!')
-    let x = event.clientX;
-    let y = event.clientY;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    
+    const third = width / 3;
+    const thirdY = height / 3;
 
+    const rect = areaBoxes.getBoundingClientRect();
+    let x = event.clientX - rect.left;
+    let y = event.clientY;
+    console.log(x,third);
     //for ice cream booth
     if (x < third) {
+        console.log('1')
         navBtn1.style.opacity = 1;
         navBtn2.style.opacity = 0;
         navBtn3.style.opacity = 0;
     } else if (x > third && x < third * 2) {
+        console.log('2')
         navBtn1.style.opacity = 0;
         navBtn2.style.opacity = 1;
         navBtn3.style.opacity = 0;
     } else if (x > third * 2) {
+        console.log('3')
         navBtn1.style.opacity = 0;
         navBtn2.style.opacity = 0;
         navBtn3.style.opacity = 1;
+    }else{
+        
     }
 })
 
@@ -89,56 +87,39 @@ areaBoxes.addEventListener('pointerout', function () {
     navBtn3.style.opacity = 0;
 })
 
-movingPhone.addEventListener('touchstart', function (event) {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    const x = event.clientX;
-    const y = event.clientY;
+areaBoxes.addEventListener('touchstart', function (event) {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let x = event.clientX;
+    let y = event.clientY;
     const third = width / 3;
     const thirdY = height / 3;
 
     //for ice cream booth
-    if (x < third && y > thirdY * 2) {
+    if (x < third ) {
+        console.log('1')
         navBtn1.style.opacity = 1;
         navBtn2.style.opacity = 0;
         navBtn3.style.opacity = 0;
     } else if (third < x && x < third * 2) {
+        console.log('2')
         navBtn1.style.opacity = 0;
         navBtn2.style.opacity = 1;
         navBtn3.style.opacity = 0;
     } else if (x > third * 2) {
+        console.log('3')
         navBtn1.style.opacity = 0;
         navBtn2.style.opacity = 0;
         navBtn3.style.opacity = 1;
     }
 })
 
-movingPhone.addEventListener('touchend', function () {
+areaBoxes.addEventListener('touchend', function () {
     navBtn1.style.opacity = 0;
     navBtn2.style.opacity = 0;
     navBtn3.style.opacity = 0;
 })
 
-function showNavBtn(event) {
-    // Get the x position of the mouse or touch event
-    const width = movingPhone.offsetWidth;
-    const x = event.clientX - movingPhone.left;
-    const third = width / 3;
-
-    if (x < third) {
-        navBtn1.style.opacity = 1;
-        navBtn2.style.opacity = 0;
-        navBtn3.style.opacity = 0;
-    } else if (x < third * 2) {
-        navBtn1.style.opacity = 0;
-        navBtn2.style.opacity = 1;
-        navBtn3.style.opacity = 0;
-    } else {
-        navBtn1.style.opacity = 0;
-        navBtn2.style.opacity = 0;
-        navBtn3.style.opacity = 1;
-    }
-}
 
 if (!localStorage.getItem('status')) {
     let airLayer1 = document.querySelector('#color-layer1');
