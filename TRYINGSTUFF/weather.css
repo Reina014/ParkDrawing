@@ -1,0 +1,23 @@
+/* for an average day */
+.cleanAir {
+    background: rgb(236, 238, 174);
+    background: radial-gradient(circle, rgba(236, 238, 174, 1) 0%, rgba(132, 216, 236, 1) 100%);
+}
+
+/* for a sunny day */
+
+/* for a cloudy day */
+
+/* for a rainy day */
+
+/* Ashely, please complete the gradient designs for each category above */
+
+.weatherLayer{
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    object-fit: cover;
+}
