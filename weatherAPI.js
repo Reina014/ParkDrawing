@@ -15,11 +15,13 @@ getData=async()=>{
     console.log("Error: "+ response.status);
   }
 }
-  weatherCodeData=(response)=>  {
+  weatherCodeData=(response)=> {
     let weatherC=response.daily.weathercode;
     //console.log(weatherC);
     console.log(weatherC[0]);
     let wcNum=weatherC[0];
+    console.log(typeof wcNum);
+    //lets draw now lol
 
     //clear skies
     if (wcNum==51 || wcNum==1){

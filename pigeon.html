@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pigeon Man</title>
     <link rel="stylesheet" href="interface.css">
+    <link rel="stylesheet" href="weather.css">
+
+
     <style>
         #pigeon {
             transition: transform 2s;
@@ -43,7 +46,8 @@
 <body>
 <div id="container">
   <img class="backG" src="media/pigeonPage/pigeon.png"></img>
-  <div class="weatherLayer cleanAir"></div>
+
+  <div class="weatherLayer" id="cleanAir"></div>
 
         <img id="pigeon" class="mainImage" src="media/pigeonPage/pigeon1.png" alt="">
         <div id="returnButton">
@@ -67,7 +71,6 @@
 
             //randomly make the pigeon coo
             let num = Math.floor(Math.random() * 2);
-            console.log(num);
             if (num == 1) {
                 coo.play();
             }
@@ -81,6 +84,8 @@
         document.querySelector('#natureSound').play();
 
     </script>
+    <script src="weatherAPI.js"></script>
+
 </body>
 
 </html>
