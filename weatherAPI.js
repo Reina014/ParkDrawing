@@ -112,11 +112,11 @@ getData=async()=>{
     }
   }
 
-window.addEventListener('load', getData);
-window.addEventListener('load', setup);
+window.addEventListener('onload', getData);
+window.addEventListener('onload', setup);
 window.addEventListener('resize', setup);
 window.addEventListener('resize', weatherCodeData);
-window.addEventListener('load', weatherCodeData);
+window.addEventListener('onload', weatherCodeData);
 
 /*
 WEATHER CODE KEY

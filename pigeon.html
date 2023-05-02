@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pigeon Man</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="interface.css">
     <style>
         #pigeon {
             transition: transform 2s;
+            z-index: 20;
         }
 
         #returnButton {
             position: absolute;
             top: 85%;
             left: 2%;
+            z-index: 30;
         }
 
         #returnImg {
@@ -40,17 +41,16 @@
 </head>
 
 <body>
-    <div class="weatherLayer cleanAir"></div>
-    <div class="mainImageContainer">
-        <img id="bg" class="mainImage" src="media/pigeonPage/pigeon.png">
+<div id="container">
+  <img class="backG" src="media/pigeonPage/pigeon.png"></img>
+
         <img id="pigeon" class="mainImage" src="media/pigeonPage/pigeon1.png" alt="">
         <div id="returnButton">
             <a href="index.html">
                 <img id="returnImg" src="media/btn2.png" alt="">
             </a>
         </div>
-    </div>
-
+</div>
     <audio id="coo" src="media/sound/pigeonCoo.mp3"></audio>
 
     <audio id="natureSound" src="media/sound/natureSound.m4a" loop autoplay></audio>
@@ -69,16 +69,13 @@
             console.log(num);
             if (num == 1) {
                 coo.play();
-
             }
-
 
             setTimeout(function () {
                 jumpY = Math.random() * window.innerHeight * .05;
                 pigeon.style.transform = 'translateX(-' + jumpX + 'px) translateY(-' + jumpY + 'px)';
             }, 1800);
         })
-
 
         document.querySelector('#natureSound').play();
 
