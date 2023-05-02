@@ -1,10 +1,10 @@
+// for the moving phone
 let movingPhone = document.querySelector('#phone');
 let ranNum = Math.random() * window.innerWidth * .5;
 let shutterSound = document.querySelector('#shutter')
 movingPhone.addEventListener('pointerdown', function () {
     shutterSound.play();
 })
-
 
 setInterval(function () {
     const left = parseInt(getComputedStyle(movingPhone).getPropertyValue('left'));
@@ -13,6 +13,7 @@ setInterval(function () {
     ranNum = Math.random() * window.innerWidth * .5;
 }, 7000);
 
+//for the interface buttons
 //the layer of phone is at front
 let navBtn1 = document.querySelector('#btn1');
 let navBtn2 = document.querySelector('#btn2');
@@ -42,13 +43,17 @@ navBtn3.addEventListener('touchstart', function () {
     navBtn3.style.opacity = 1;
 })
 
+
+const width = window.innerWidth;
+const height = window.innerHeight;
+const third = width / 3;
+const thirdY = height / 3;
+
+let areaBox = document.
+
 movingPhone.addEventListener('pointerover', function (event) {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
     const x = event.clientX;
     const y = event.clientY;
-    const third = width / 3;
-    const thirdY = height / 3;
 
     //for ice cream booth
     if (x < third && y > thirdY * 2) {
