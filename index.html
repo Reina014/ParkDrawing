@@ -160,9 +160,12 @@
 
         .introBtn {
             position: absolute;
+
         }
 
-        .introBtn>img {
+        #btn1,
+        #btn2,
+        #btn3 {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 1000px;
             border: 2px solid rgb(63, 70, 81);
@@ -170,6 +173,21 @@
             transform: scale(1);
             transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
             opacity: 0;
+        }
+
+        #btn1:hover,
+        #btn2:hover,
+        #btn3:hover {
+            box-shadow: rgba(0, 0, 0, 0.482) 0px 3px 8px;
+            border-radius: 1000px;
+            border: 2px solid black;
+
+            transform: scale(1.3);
+            transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        #btn3 {
+            width: 30%;
         }
 
         #btn1Container {
@@ -184,7 +202,7 @@
 
         #btn3Container {
             top: 50%;
-            left: 50%;
+            left: 80%;
         }
     </style>
 
@@ -240,15 +258,21 @@
         </div>
 
         <div class="introBtn" id="btn1Container">
-            <img id="btn1" src="media/iceCreamIntro.png" alt="">
+            <a href="iceCream.html">
+                <img id="btn1" src="media/iceCreamIntro.png" alt="">
+            </a>
         </div>
 
         <div class="introBtn" id="btn2Container">
-            <img id="btn2" src="media/jazzIntro.png" alt="">
+            <a href="jazz.html">
+                <img id="btn2" src="media/jazzIntro.png" alt="">
+            </a>
         </div>
 
         <div class="introBtn" id="btn3Container">
-            <img id="btn3" src="media/pigeonIntro.png" alt="">
+            <a href="pigeon.html">
+                <img id="btn3" src="media/pigeonIntro.png" alt="">
+            </a>
         </div>
 
         <script>
@@ -303,6 +327,36 @@
             })
 
             movingPhone.addEventListener('pointerout', function () {
+                navBtn1.style.opacity = 0;
+                navBtn2.style.opacity = 0;
+                navBtn3.style.opacity = 0;
+            })
+
+            movingPhone.addEventListener('touchstart', function (event) {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                const x = event.clientX;
+                const y = event.clientY;
+                const third = width / 3;
+                const thirdY = height / 3;
+
+                //for ice cream booth
+                if (x < third && y > thirdY * 2) {
+                    navBtn1.style.opacity = 1;
+                    navBtn2.style.opacity = 0;
+                    navBtn3.style.opacity = 0;
+                } else if (third < x && x < third * 2) {
+                    navBtn1.style.opacity = 0;
+                    navBtn2.style.opacity = 1;
+                    navBtn3.style.opacity = 0;
+                } else if (x > third * 2) {
+                    navBtn1.style.opacity = 0;
+                    navBtn2.style.opacity = 0;
+                    navBtn3.style.opacity = 1;
+                }
+            })
+
+            movingPhone.addEventListener('touchend', function () {
                 navBtn1.style.opacity = 0;
                 navBtn2.style.opacity = 0;
                 navBtn3.style.opacity = 0;
