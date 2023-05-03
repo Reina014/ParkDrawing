@@ -34,9 +34,11 @@
     /* viewport height */
     background-size: cover;
     background-position: center;
-    
+    overflow: hidden;
 }
-
+body{
+  overflow: hidden;
+}
 .backG {
     width: 100vw;
     height: 100vh;
