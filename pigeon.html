@@ -23,6 +23,29 @@
             z-index: 30;
         }
 
+        #container {
+            position: absolute;
+            z-index: 1;
+            width: 100vw;
+            height: 100vh;
+            /* viewport height */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .backG {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+            object-fit: cover;
+        }
+
         #returnImg {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 1000px;
@@ -84,7 +107,7 @@
         document.querySelector('#natureSound').play();
 
     </script>
-    <script src="weatherAPI.js"></script>
+    <!-- <script src="weatherAPI.js"></script> -->
 
 </body>
 
