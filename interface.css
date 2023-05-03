@@ -1,3 +1,29 @@
+/* Show the semitransparent layer for mobile devices */
+@media only screen and (max-width: 660px) {
+    .landscape-message {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      text-align: center;
+      font-size: 24px;
+      color: white;
+      padding-top: 50%;
+    }
+  }
+  
+  /* Hide the semitransparent layer for desktop devices */
+  @media only screen and (min-width: 769px) {
+    .landscape-message {
+      display: none;
+    }
+  }
+
+
 .box {
     border: blue 3px solid;
     box-sizing: border-box;
@@ -29,9 +55,9 @@
 #container {
     position: absolute;
     z-index: 1;
-    width: 100%;
-    height: 100%;
-    /* viewport height */
+    width: 100vw;
+    height: 100vh;
+
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -40,8 +66,8 @@ body{
   overflow: hidden;
 }
 .backG {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     position: fixed;
     left: 0;
@@ -56,8 +82,8 @@ body{
 
 .introBtn {
     position: absolute;
-    z-index: 15;
-    display: none;
+    z-index: 6;
+
 }
 
 #btn1,
@@ -121,8 +147,8 @@ body{
 #phone {
     left: -20%;
     transition: transform 5s;
-    z-index: 12;
-    opacity: 0;
+    z-index: 5;
+    opacity: 1;
     transition: transform 3s opacity 3s;
 }
 
@@ -132,7 +158,7 @@ body{
     position: fixed;
     width: 100%;
     height: 100%;
-    opacity: 1;
+    opacity: 7;
     object-fit: cover;
     transition: opacity 3s;
 }
@@ -161,5 +187,5 @@ body{
     width: 100vw;
     height: 100vh;
     position: absolute;
-    z-index: 11;
+    z-index: 8;
 }
