@@ -5,6 +5,14 @@ let movingPhone = document.querySelector('#phone');
 let ranNum = Math.random() * window.innerWidth * .5;
 let shutterSound = document.querySelector('#shutter')
 
+let airLayer1 = document.querySelector('#color-layer1');
+let airLayer2 = document.querySelector('#color-layer2');
+let subwayPic = document.querySelector('#subway');
+let subwayNoise = document.querySelector('#subwayNoise');
+let interval;
+
+let natureSound = document.querySelector('#natureSound');
+
 
 setInterval(function () {
     const left = parseInt(getComputedStyle(movingPhone).getPropertyValue('left'));
@@ -15,13 +23,7 @@ setInterval(function () {
 
 
 if (!localStorage.getItem('status')) {
-    let airLayer1 = document.querySelector('#color-layer1');
-    let airLayer2 = document.querySelector('#color-layer2');
-    let subwayPic = document.querySelector('#subway');
-    let subwayNoise = document.querySelector('#subwayNoise');
-    let interval;
-
-    let natureSound = document.querySelector('#natureSound');
+   
 
     //if the user interact with the page
     subwayPic.addEventListener('pointerdown', function () {
