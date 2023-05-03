@@ -34,6 +34,7 @@
     /* viewport height */
     background-size: cover;
     background-position: center;
+    
 }
 
 .backG {
@@ -82,8 +83,8 @@
 
 #btn1Container {
 
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
     top: 70%;
     left: 3%;
 
@@ -91,18 +92,18 @@
 
 #btn2Container {
 
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
     top: 50%;
     left: 40%;
 }
 
 #btn3Container {
 
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     top: 60%;
-    left: 87%;
+    left: 90%;
 }
 
 .mainImage {
