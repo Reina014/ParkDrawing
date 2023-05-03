@@ -7,21 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Park Drawing New</title>
 
-    <link rel="stylesheet" href="interface.css">
+    <!-- <link rel="stylesheet" href="interface.css"> -->
     <link rel="stylesheet" href="weather.css">
 
     <style>
         .box {
-            border: red 3px solid;
+            border: blue 3px solid;
             box-sizing: border-box;
 
-        }
-
-        #areaBoxes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 500;
         }
 
         #box1 {
@@ -38,6 +31,147 @@
             width: calc(66.66vw);
             height: 100%;
         }
+
+        #areaBoxes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+        }
+
+        #container {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            /* viewport height */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .backG {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+            object-fit: cover;
+        }
+
+
+        .introBtn {
+            position: absolute;
+            z-index: 15;
+            display: none;
+        }
+
+        #btn1,
+        #btn2,
+        #btn3 {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 1000px;
+            border: 2px solid rgb(63, 70, 81);
+            width: 100%;
+            transform: scale(1);
+            transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+
+        #btn1:hover,
+        #btn2:hover,
+        #btn3:hover {
+            box-shadow: rgba(0, 0, 0, 0.482) 0px 3px 8px;
+            border-radius: 1000px;
+            border: 2px solid black;
+            opacity: 1;
+            transform: scale(1.2);
+            transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+
+        #btn1Container {
+
+            width: 250px;
+            height: 250px;
+            top: 70%;
+            left: 3%;
+
+        }
+
+        #btn2Container {
+
+            width: 250px;
+            height: 250px;
+            top: 50%;
+            left: 40%;
+        }
+
+        #btn3Container {
+
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 87%;
+        }
+
+        .mainImage {
+            top: 0;
+            width: auto;
+            height: 100%;
+            opacity: 1;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        #phone {
+            left: -20%;
+            transition: transform 5s;
+            z-index: 12;
+            opacity: 0;
+            transition: transform 3s opacity 3s;
+        }
+
+        #color-layer1 {
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            object-fit: cover;
+            transition: opacity 3s;
+        }
+
+        .dirtyAir {
+            background: rgb(72, 74, 103);
+            background: linear-gradient(0deg, rgba(72, 74, 103, 1) 0%, rgba(255, 245, 179, 1) 78%);
+        }
+
+
+        #subway {
+
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            mix-blend-mode: overlay;
+            opacity: 1;
+            transition: opacity 3s;
+
+        }
+
+        #trainLayer {
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            z-index: 11;
+        }
     </style>
 </head>
 
@@ -45,58 +179,164 @@
 
     <div id="container">
 
-        <div class="weatherLayer" id="cleanAir"></div>
+        <div class="weatherLayer cleanAir"></div>
 
         <img class="backG" src="media/interface/interface.png"></img>
-        <div id="areaBoxes">
-            <div id="box1" class="box"></div>
-            <div id="box2" class="box"></div>
-            <div id="box3" class="box"></div>
-        </div>
 
         <img class="mainImage" id="phone" src="media/interface/phone.png" alt="">
+    </div>
 
+    <audio id="natureSound" src="media/sound/natureSound.m4a" loop></audio>
 
+    <audio id="shutter" src="media/sound/shutter.m4a"></audio>
 
-        <audio id="natureSound" src="media/sound/natureSound.m4a" loop></audio>
+    <div id="trainLayer">
+        <div id="color-layer1" class="dirtyAir"></div>
+        <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay></audio>
+        <img id="subway" src="media/subwayDrawing.jpeg" alt="">
 
+    </div>
 
-        <audio id="shutter" src="media/sound/shutter.m4a"></audio>
+    <div class="introBtn" id="btn1Container">
+        <a href="iceCream.html">
+            <img id="btn1" src="media/placeholder.png" alt="">
+        </a>
+    </div>
 
-        <audio id="natureSound" src="media/sound/natureSound.m4a" loop></audio>
+    <div class="introBtn" id="btn2Container">
+        <a href="jazz.html">
+            <img id="btn2" src="media/placeholder.png" alt="">
+        </a>
+    </div>
 
-        <audio id="shutter" src="media/sound/shutter.m4a"></audio>
-
-        <div id="trainLayer">
-            <div id="color-layer1" class="dirtyAir"></div>
-            <audio id="subwayNoise" src="media/sound/Subway.m4a" autoplay></audio>
-            <img id="subway" src="media/subwayDrawing.jpeg" alt="">
-
-        </div>
-
-        <div class="introBtn" id="btn1Container">
-            <a href="iceCream.html">
-                <img id="btn1" src="media/placeholder.png" alt="">
-            </a>
-        </div>
-
-        <div class="introBtn" id="btn2Container">
-            <a href="jazz.html">
-                <img id="btn2" src="media/placeholder.png" alt="">
-            </a>
-        </div>
-
-        <div class="introBtn" id="btn3Container">
-            <a href="pigeon.html">
-                <img id="btn3" src="media/placeholder.png" alt="">
-            </a>
-        </div>
-
+    <div class="introBtn" id="btn3Container">
+        <a href="pigeon.html">
+            <img id="btn3" src="media/placeholder.png" alt="">
+        </a>
     </div>
 
 
 
-    <script src="interface.js"></script>
+    <script>
+        let introBtns = document.querySelectorAll('.introBtn');
+
+        // for the moving phone
+        let movingPhone = document.querySelector('#phone');
+        let ranNum = Math.random() * window.innerWidth * .5;
+        let shutterSound = document.querySelector('#shutter')
+
+
+        setInterval(function () {
+            const left = parseInt(getComputedStyle(movingPhone).getPropertyValue('left'));
+            movingPhone.style.transform = 'translateX(' + ranNum + 'px)';
+
+            ranNum = Math.random() * window.innerWidth * .5;
+        }, 7000);
+
+
+        if (!localStorage.getItem('status')) {
+            let airLayer1 = document.querySelector('#color-layer1');
+            let airLayer2 = document.querySelector('#color-layer2');
+            let subwayPic = document.querySelector('#subway');
+            let subwayNoise = document.querySelector('#subwayNoise');
+            let interval;
+
+            let natureSound = document.querySelector('#natureSound');
+
+            //if the user interact with the page
+            subwayPic.addEventListener('pointerdown', function () {
+
+                setTimeout(function () {
+                    airLayer1.style.opacity = "0";
+                    subwayPic.style.opacity = "0";
+                }, 2000)
+
+                setTimeout(function () {
+
+                    airLayer1.style.display = 'none';
+                    subwayPic.style.display = 'none';
+                    subwayNoise.pause();
+                }, 5000);
+
+                interval = setInterval(function () {
+                    if (subwayNoise.volume > 0) {
+                        subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);
+                        natureSound.volume = Math.max(1, subwayNoise.volume + 0.1);
+                        natureSound.play();
+
+                    } else {
+                        for (let i = 0; i < introBtns.length; i++) {
+                            introBtns[i].style.display = 'block';
+                        }
+                        clearInterval(interval);
+                        subwayNoise.pause();
+
+                        movingPhone.style.opacity = 1;
+                    }
+                }, 1000);
+
+                localStorage.setItem('status', 'visited');
+
+            })
+
+            //if the user did not interact with the page
+            setTimeout(function () {
+                if (subwayPic.style.display != 'none') {
+                    setTimeout(function () {
+                        airLayer1.style.opacity = "0";
+                        subwayPic.style.opacity = "0";
+                    }, 2000)
+
+                    setTimeout(function () {
+
+                        airLayer1.style.display = 'none';
+                        subwayPic.style.display = 'none';
+                        subwayNoise.pause();
+                    }, 5000);
+
+                    interval = setInterval(function () {
+                        if (subwayNoise.volume > 0) {
+                            subwayNoise.volume = Math.max(0, subwayNoise.volume - 0.1);
+                        } else {
+                            subwayNoise.pause();
+                            natureSound.play();
+                            clearInterval(interval);
+                            for (let i = 0; i < introBtns.length; i++) {
+                                introBtns[i].style.display = 'block';
+                            }
+
+                            movingPhone.style.opacity = 1;
+
+                        }
+                    }, 1000);
+
+                }
+
+                //localStorage.setItem('status', 'visited');
+            }, 24000);
+
+
+        } else {
+            document.querySelector('#trainLayer').style.display = 'none';
+            for (let i = 0; i < introBtns.length; i++) {
+                introBtns[i].style.display = 'block';
+            }
+
+            movingPhone.style.opacity = 1;
+
+            subwayNoise.pause();
+            natureSound.play();
+
+            movingPhone.addEventListener('pointerdown', function () {
+                console.log('clicked');
+                shutterSound.play();
+            })
+        }
+
+
+    </script>
+
+    <!-- <script src="interface.js"></script> -->
 
 
 </body>

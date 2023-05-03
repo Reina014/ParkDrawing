@@ -21,9 +21,9 @@
 
     // Load the note image
     const noteImg = new Image();
-    noteImg.src = 'media/jazzPage' + noteArray[ranArray];
+    noteImg.src = 'media/jazzPage/' + noteArray[ranArray];
     const noteImg1 = new Image();
-    noteImg1.src = 'media/jazzPage' + noteArray[ranArray];
+    noteImg1.src = 'media/jazzPage/' + noteArray[ranArray];
 
     // Draw the note image at a specific location on the canvas
     let ranSize = Math.random() * 160 + 140;
@@ -65,7 +65,7 @@
                 ranNumY = Math.random() * 2.5 + .5;
 
                 ranArray = Math.floor(Math.random() * 3);
-                noteImg.src = 'media/jazzPage' + noteArray[ranArray];
+                noteImg.src = 'media/jazzPage/' + noteArray[ranArray];
                 ranSize = Math.random() * 160 + 140;
                 opacity = 1;
             }
@@ -81,7 +81,7 @@
                 ranNumY = Math.random() * 2.5 + .5;
 
                 ranArray = Math.floor(Math.random() * 3);
-                noteImg.src = 'media/jazzPage' + noteArray[ranArray];
+                noteImg.src = 'media/jazzPage/' + noteArray[ranArray];
                 ranSize = Math.random() * 160 + 140;
                 opacity = 1;
             }
