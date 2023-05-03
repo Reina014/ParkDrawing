@@ -6,64 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pigeon Man</title>
-    <link rel="stylesheet" href="interface.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="pigeon.css">
 
-
-    <style>
-        #pigeon {
-            transition: transform 2s;
-            z-index: 20;
-        }
-
-        #returnButton {
-            position: absolute;
-            top: 85%;
-            left: 90%;
-            z-index: 30;
-        }
-
-        #container {
-            position: absolute;
-            z-index: 1;
-            width: 100vw;
-            height: 100vh;
-            /* viewport height */
-            background-size: cover;
-            background-position: center;
-        }
-
-        .backG {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            z-index: 1;
-            object-fit: cover;
-        }
-
-        #returnImg {
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            border-radius: 1000px;
-            border: 2px solid rgb(63, 70, 81);
-            width: 75%;
-            transform: scale(1);
-            transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-
-        #returnImg:hover {
-            box-shadow: rgba(0, 0, 0, 0.482) 0px 3px 8px;
-            border-radius: 1000px;
-            border: 2px solid black;
-
-            transform: scale(1.3);
-            transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-    </style>
 </head>
 
 <body>

@@ -1,10 +1,10 @@
+let introBtns = document.querySelectorAll('.introBtn');
+
 // for the moving phone
 let movingPhone = document.querySelector('#phone');
 let ranNum = Math.random() * window.innerWidth * .5;
 let shutterSound = document.querySelector('#shutter')
-movingPhone.addEventListener('pointerdown', function () {
-    shutterSound.play();
-})
+
 
 setInterval(function () {
     const left = parseInt(getComputedStyle(movingPhone).getPropertyValue('left'));
@@ -12,113 +12,6 @@ setInterval(function () {
 
     ranNum = Math.random() * window.innerWidth * .5;
 }, 7000);
-
-//for the interface buttons
-//the layer of phone is at front
-let navBtn1 = document.querySelector('#btn1');
-let navBtn2 = document.querySelector('#btn2');
-let navBtn3 = document.querySelector('#btn3');
-
-navBtn1.addEventListener('pointerover', function () {
-    navBtn1.style.opacity = 1;
-})
-
-navBtn2.addEventListener('pointerover', function () {
-    navBtn2.style.opacity = 1;
-})
-
-navBtn3.addEventListener('pointerover', function () {
-    navBtn3.style.opacity = 1;
-})
-
-navBtn1.addEventListener('touchstart', function () {
-    navBtn1.style.opacity = 1;
-})
-
-navBtn2.addEventListener('touchstart', function () {
-    navBtn2.style.opacity = 1;
-})
-
-navBtn3.addEventListener('touchstart', function () {
-    navBtn3.style.opacity = 1;
-})
-
-
-
-let areaBoxes = document.querySelector('#areaBoxes');
-
-
-
-areaBoxes.addEventListener('pointerover', function (event) {
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    
-    const third = width / 3;
-    const thirdY = height / 3;
-
-    const rect = areaBoxes.getBoundingClientRect();
-    let x = event.clientX - rect.left;
-    let y = event.clientY;
-    console.log(x,third);
-    //for ice cream booth
-    if (x < third) {
-        console.log('1')
-        navBtn1.style.opacity = 1;
-        navBtn2.style.opacity = 0;
-        navBtn3.style.opacity = 0;
-    } else if (x > third && x < third * 2) {
-        console.log('2')
-        navBtn1.style.opacity = 0;
-        navBtn2.style.opacity = 1;
-        navBtn3.style.opacity = 0;
-    } else if (x > third * 2) {
-        console.log('3')
-        navBtn1.style.opacity = 0;
-        navBtn2.style.opacity = 0;
-        navBtn3.style.opacity = 1;
-    }else{
-        
-    }
-})
-
-areaBoxes.addEventListener('pointerout', function () {
-    navBtn1.style.opacity = 0;
-    navBtn2.style.opacity = 0;
-    navBtn3.style.opacity = 0;
-})
-
-areaBoxes.addEventListener('touchstart', function (event) {
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let x = event.clientX;
-    let y = event.clientY;
-    const third = width / 3;
-    const thirdY = height / 3;
-
-    //for ice cream booth
-    if (x < third ) {
-        console.log('1')
-        navBtn1.style.opacity = 1;
-        navBtn2.style.opacity = 0;
-        navBtn3.style.opacity = 0;
-    } else if (third < x && x < third * 2) {
-        console.log('2')
-        navBtn1.style.opacity = 0;
-        navBtn2.style.opacity = 1;
-        navBtn3.style.opacity = 0;
-    } else if (x > third * 2) {
-        console.log('3')
-        navBtn1.style.opacity = 0;
-        navBtn2.style.opacity = 0;
-        navBtn3.style.opacity = 1;
-    }
-})
-
-areaBoxes.addEventListener('touchend', function () {
-    navBtn1.style.opacity = 0;
-    navBtn2.style.opacity = 0;
-    navBtn3.style.opacity = 0;
-})
 
 
 if (!localStorage.getItem('status')) {
@@ -152,9 +45,13 @@ if (!localStorage.getItem('status')) {
                 natureSound.play();
 
             } else {
+                for (let i = 0; i < introBtns.length; i++) {
+                    introBtns[i].style.display = 'block';
+                }
                 clearInterval(interval);
                 subwayNoise.pause();
 
+                movingPhone.style.opacity = 1;
             }
         }, 1000);
 
@@ -184,6 +81,11 @@ if (!localStorage.getItem('status')) {
                     subwayNoise.pause();
                     natureSound.play();
                     clearInterval(interval);
+                    for (let i = 0; i < introBtns.length; i++) {
+                        introBtns[i].style.display = 'block';
+                    }
+
+                    movingPhone.style.opacity = 1;
 
                 }
             }, 1000);
@@ -196,4 +98,17 @@ if (!localStorage.getItem('status')) {
 
 } else {
     document.querySelector('#trainLayer').style.display = 'none';
+    for (let i = 0; i < introBtns.length; i++) {
+        introBtns[i].style.display = 'block';
+    }
+
+    movingPhone.style.opacity = 1;
+
+    subwayNoise.pause();
+    natureSound.play();
+
+    movingPhone.addEventListener('pointerdown', function () {
+        console.log('clicked');
+        shutterSound.play();
+    })
 }

@@ -1,0 +1,66 @@
+ canvas {
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            z-index: 4;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        #notes {
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            z-index: 20;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+
+        #returnButton {
+            position: absolute;
+            top: 85%;
+            left: 2%;
+            z-index: 20;
+        }
+
+        #returnImg {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 1000px;
+            border: 2px solid rgb(63, 70, 81);
+            width: 15%;
+            transform: scale(1);
+            transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        #returnImg:hover {
+            box-shadow: rgba(0, 0, 0, 0.482) 0px 3px 8px;
+            border-radius: 1000px;
+            border: 2px solid black;
+
+            transform: scale(1.3);
+            transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        #container {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            /* viewport height */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .backG {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+            object-fit: cover;
+        }
