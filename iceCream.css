@@ -9,7 +9,13 @@
     transition: opacity 3s, transform 3s;
 
 }
+body{
+  overflow: hidden;
+}
+#container{
+  overflow: hidden;
 
+}
 #returnButton {
     position: absolute;
     top: 85%;
