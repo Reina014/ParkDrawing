@@ -55,8 +55,9 @@ if (!localStorage.getItem('status')) {
                 // for (let i = 0; i < introBtns.length; i++) {
                 //     introBtns[i].style.display = 'block';
                 // }
-                clearInterval(interval);
                 subwayNoise.pause();
+                clearInterval(interval);
+                
 
                 
             }
